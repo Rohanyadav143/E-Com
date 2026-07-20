@@ -1,52 +1,70 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
 export default function Footer() {
+    let [settingData, setSettingData] = useState({
+        siteName: import.meta.env.VITE_APP_SITE_NAME,
+        map1: import.meta.env.VITE_APP_MAP1,
+        address: import.meta.env.VITE_APP_ADDRESS,
+        email: import.meta.env.VITE_APP_EMAIL,
+        phone: import.meta.env.VITE_APP_PHONE,
+        whatsapp: import.meta.env.VITE_APP_WHATS_APP,
+        facebook: import.meta.env.VITE_APP_FACEBOOK,
+        twitter: import.meta.env.VITE_APP_TWITTER,
+        linkedin: import.meta.env.VITE_APP_LINKEDIN,
+        youtube: import.meta.env.VITE_APP_YOUTUBE,
+        instagram: import.meta.env.VITE_APP_INSTAGRAM
+    })
     return (
         <>
             <div className="container-fluid bg-dark text-white-50 footer pt-5">
                 <div className="container py-5">
                     <div className="row g-5">
                         <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.1s">
-                            <a href="index.html" className="d-inline-block mb-3">
-                                <h1 className="text-white">iSTUDIO</h1>
-                            </a>
-                            <p className="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                                amet diam et eos labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus
-                                clita duo justo et tempor</p>
+                            <Link to="/" className="d-inline-block mb-3">
+                                <h1 className="text-white">{settingData.siteName}</h1>
+                            </Link>
+                            <p className="mb-0 text-light">{settingData.siteName} is your trusted online shopping destination, offering quality products at competitive prices. We combine affordability, convenience, and secure shopping to deliver a seamless experience with fast delivery and excellent customer support for every customer.</p>
                         </div>
                         <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.3s">
                             <h5 className="text-white mb-4">Get In Touch</h5>
-                            <p><i className="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                            <p><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                            <p><i className="fa fa-envelope me-3"></i>info@example.com</p>
+                            <Link to={settingData.map1} target='_blank' className='d-block text-light mb-2'><i className="fa fa-map-marker-alt me-3"></i>{settingData.address}</Link>
+                            <Link to={`mailto:${settingData.email}`} target='_blank' className='d-block text-light mb-2'><i className="bi bi-envelope me-3"></i>{settingData.email}</Link>
+                            <Link to={`tel:${settingData.phone}`} target='_blank' className='d-block text-light mb-2'><i className="bi bi-telephone me-3"></i>{settingData.phone}</Link>
+                            <Link to={`https://wa.me/${settingData.whatsapp}`} target='_blank' className='d-block text-light mb-2'><i className="bi bi-whatsapp me-3"></i>{settingData.whatsapp}</Link>
                             <div className="d-flex pt-2">
-                                <a className="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
-                                    className="fab fa-twitter"></i></a>
-                                <a className="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
-                                    className="fab fa-facebook-f"></i></a>
-                                <a className="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
-                                    className="fab fa-youtube"></i></a>
-                                <a className="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
-                                    className="fab fa-instagram"></i></a>
-                                <a className="btn btn-outline-primary btn-square border-2 me-2" href="#!"><i
-                                    className="fab fa-linkedin-in"></i></a>
+                                <a className="btn btn-outline-light btn-square border-2 me-2" href={settingData.facebook} target='_blank'>
+                                    <i className="fab fa-facebook-f"></i>
+                                </a>
+                                <a className="btn btn-outline-light btn-square border-2 me-2" href={settingData.twitter} target='_blank'>
+                                    <i className="fab fa-twitter"></i>
+                                </a>
+                                <a className="btn btn-outline-light btn-square border-2 me-2" href={settingData.youtube} target='_blank'>
+                                    <i className="fab fa-youtube"></i>
+                                </a>
+                                <a className="btn btn-outline-light btn-square border-2 me-2" href={settingData.instagram} target='_blank'>
+                                    <i className="fab fa-instagram"></i>
+                                </a>
+                                <a className="btn btn-outline-light btn-square border-2 me-2" href={settingData.linkedin} target='_blank'>
+                                    <i className="fab fa-linkedin-in"></i>
+                                </a>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.5s">
-                            <h5 className="text-white mb-4">Popular Link</h5>
-                            <a className="btn btn-link" href="#!">About Us</a>
-                            <a className="btn btn-link" href="#!">Contact Us</a>
-                            <a className="btn btn-link" href="#!">Privacy Policy</a>
-                            <a className="btn btn-link" href="#!">Terms & Condition</a>
-                            <a className="btn btn-link" href="#!">Career</a>
+                            <h5 className="text-white mb-4">Quick Link</h5>
+                            <Link className="btn btn-link text-light" to="">Home</Link>
+                            <Link className="btn btn-link text-light" to="/about">About Us</Link>
+                            <Link className="btn btn-link text-light" to="/shop">Shop</Link>
+                            <Link className="btn btn-link text-light" to="/feature">Feature</Link>
+                            <Link className="btn btn-link text-light" to="/faq">Faq</Link>
                         </div>
                         <div className="col-md-6 col-lg-3 wow fadeIn" data-wow-delay="0.7s">
-                            <h5 className="text-white mb-4">Our Services</h5>
-                            <a className="btn btn-link" href="#!">Interior Design</a>
-                            <a className="btn btn-link" href="#!">Project Planning</a>
-                            <a className="btn btn-link" href="#!">Renovation</a>
-                            <a className="btn btn-link" href="#!">Implement</a>
-                            <a className="btn btn-link" href="#!">Landscape Design</a>
+                            <h5 className="text-white mb-4">Other Links</h5>
+                            <Link className="btn btn-link text-light" to="/testimonialt">Testimonial</Link>
+                            <Link className="btn btn-link text-light" to="/contactus">Contact Us</Link>
+                            <Link className="btn btn-link text-light" to="/privacy-policy">Privacy Policy</Link>
+                            <Link className="btn btn-link text-light" to="/tc">Terms and Conditions</Link>
+                            <Link className="btn btn-link text-light" to="/refund Policy">Refund Policy</Link>
                         </div>
                     </div>
                 </div>
@@ -54,17 +72,16 @@ export default function Footer() {
                     <div className="copyright">
                         <div className="row">
                             <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                                &copy; <a className="border-bottom" href="#!">Your Site Name</a>, All Right Reserved.
-
-                                Designed By <a className="border-bottom" href="https://htmlcodex.com">HTML Codex</a>. Distributed by
-                                <a className="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                                &copy; <Link className="border-bottom" to="/">{settingData.siteName}</Link>, All Right Reserved.
                             </div>
                             <div className="col-md-6 text-center text-md-end">
                                 <div className="footer-menu">
-                                    <a href="#!">Home</a>
-                                    <a href="#!">Cookies</a>
-                                    <a href="#!">Help</a>
-                                    <a href="#!">FAQs</a>
+                                    <Link to="/">Home</Link>
+                                    <Link to="/about">About</Link>
+                                    <Link to="/shop">Shop</Link>
+                                    <Link to="/feature">Features</Link>
+                                    <Link to="/faq">FAQs</Link>
+                                    <Link to="/contactus">Contact Us</Link>
                                 </div>
                             </div>
                         </div>
