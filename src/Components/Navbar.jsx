@@ -55,6 +55,7 @@ export default function Navbar() {
                                 <NavLink to="/faq" className="nav-item nav-link">Faq</NavLink>
                                 <NavLink to="/testimonial" className="nav-item nav-link">Testimonial</NavLink>
                                 <NavLink to="/contact" className="nav-item nav-link">Contact Us</NavLink>
+                                <NavLink to="/admin" className="nav-item nav-link">Admin</NavLink>
                                 <div className="nav-item dropdown">
                                     <a href="#!" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Nitin Chauhan</a>
                                     <div className="dropdown-menu bg-light mt-2">
